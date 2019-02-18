@@ -1,0 +1,26 @@
+{
+  "_comment": "因未找到相应API，故使用模拟数据模拟分类标签数据",
+  "err": 0,
+  "data": [
+    {
+      "col": "美女",
+      "subUrl": "/beauty"
+    },
+    {
+      "col": "明星",
+      "subUrl": "/star"
+    },
+    {
+      "col": "动漫",
+      "subUrl": "/animation"
+    },
+    {
+      "col": "宠物",
+      "subUrl": "/pet"
+    },
+    {
+      "col": "壁纸",
+      "subUrl": "/wallpaper"
+    }
+  ]
+}

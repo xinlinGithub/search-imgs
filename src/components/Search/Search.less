@@ -1,0 +1,90 @@
+.search{
+    @height: 50px;
+    @width: 50%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* 主轴居中 x轴*/
+    justify-content: center;
+    /* 交叉轴居中*/
+    align-items: center;
+    &-content{
+        position: relative;
+        width: @width;
+        height: @height;
+        border: 1px solid blueviolet;
+        text-align: center;
+        line-height: @height;
+        .search-box{
+            width: 100%;
+            height: @height;
+        }
+        .search-inp{
+            @width: 80%;
+            float: left;
+            display: inline-block;
+            width: 80%;
+            height: @height;
+            box-sizing: border-box;
+            border: 1px solid blueviolet;
+            padding-left: 0.5rem;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            font-size: 2.5rem;
+        }
+        .search-button{
+            float: right;
+            display: inline-block;
+            width: 20%;
+            height: @height;
+            background-color: rgb(176, 116, 233);
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-align: center;
+            color: #fff;
+            line-height: @height;
+            cursor: pointer;
+        }
+        .history{
+            width: 80%;
+            box-sizing: border-box;
+            position: absolute;
+            top: @height;
+            max-height: 25rem;
+            overflow: hidden;
+            overflow-y: scroll;
+            &::-webkit-scrollbar{
+                visibility: hidden;
+                width: 0;
+            }
+            left: -1px;
+            border: 1px solid blueviolet;
+            li:not(:last-of-type){
+                border-bottom: inherit;
+            }
+            li{
+                font-size: 1.6rem;
+                line-height: 20px;
+                padding: 2px;
+                text-align: left;
+                cursor: pointer;
+                &:hover{
+                    background-color: #ccc;
+                    .blur{
+                        display: inline;
+                    }
+                }
+                .delete{
+                    float: right;
+                    margin-right: 10px;
+                    color: blueviolet;
+                    cursor: pointer;
+                    z-index: 2;
+                    &:hover{
+                        background-color: #aaa;
+                    }
+                }
+            }
+        }
+    }
+}

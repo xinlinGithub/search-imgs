@@ -1,0 +1,107 @@
+@keyframes moveloader{
+    from{
+        width: 0em;
+    }to{
+        width: 7em;
+    }
+}
+
+
+.waterfull-container {
+    height: calc(100%);
+    box-sizing: border-box;
+    padding: 10px;
+    padding-top: 50px;
+    overflow: hidden;
+    background-color: #ccc;
+    position: relative;
+    z-index: 1;
+    .loader{
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 50%;
+        font-size: 5rem;
+        background-color: rgba(0, 0, 0, .3);
+        padding: 2rem;
+        text-align: center;
+        color: #ccc;
+        z-index: 22;
+        border-radius: 5px;
+        &-move{
+            display: inline-block;
+            width: 7em;
+            overflow: hidden;
+            animation: moveloader 2s steps(7, end) infinite forwards;
+        }
+    }
+    .loader.hidden{
+        display: none;
+    }
+    .waterfull-detail {
+        font-size: 2rem;
+        font-weight: 500;
+        padding: 10px 0;
+        span {
+            color: blue;
+        }
+    }
+    .waterfull-image {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 30px);
+        box-sizing: border-box;
+        overflow: hidden;
+        padding-left: 40px;
+        overflow-y: scroll;
+        .outer-wrap{
+            height: 100%;
+            width: 100%;
+            position: relative;
+            box-sizing: border-box;
+        }
+        &::-webkit-scrollbar{
+            width: 5px;
+            background-color: orange;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: black;
+            border-radius: 2px;
+        }
+        .waterfull-img-wrap {
+            position: absolute;
+            box-sizing: border-box;
+            border-radius: 5px;
+            background-color: green;
+            padding: 10px;
+            box-shadow: 2px 2px 4px black,
+                        4px 4px 7px black;
+            img {
+                width: 100%;
+            }
+            .img-title {
+                font-size: 1.6rem;
+                padding: 5px 0;
+                strong {
+                    font-size: 1.8rem;
+                    font-weight: 500;
+                    color: blue;
+                }
+            }
+        }
+    }
+    .ret-top {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        font-size: 6rem;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        line-height: 100px;
+        text-align: center;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, .5);
+    }
+}
