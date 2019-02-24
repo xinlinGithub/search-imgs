@@ -1,8 +1,8 @@
 
 import {connect} from "react-redux";
 import SideBar from './../../components/SideBar/SideBar';
-import sidebarReducer from './../../reducers/sidebarReducer';
-import { getDataSort, hiddenSideBar } from "../../actions/index";
+// import sidebarReducer from './../../stores/reducers/sidebarReducer';
+import { getDataSort, hiddenSideBar } from "../../stores/actions/index";
 
 const mapStateToProps = (state) => {
     return {

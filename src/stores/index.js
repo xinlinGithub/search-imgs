@@ -7,7 +7,7 @@ import logger from "redux-logger";
 // 中间件使用得辅助模块
 // 本来dispatch的只能是对象 他的目的是可以dispatch一个函数 进行异步操作
 import thunk from "redux-thunk";
-import reducer from "./../reducers/index";
+import reducer from "./reducers/index";
 
 // 初始state状态
 const initState = {

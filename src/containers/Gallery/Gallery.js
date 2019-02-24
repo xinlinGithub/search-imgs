@@ -1,6 +1,6 @@
 
 import Gallery from './../../components/Gallery/Gallery';
-import { fetchingDataSort } from '../../actions/index';
+import { fetchingDataSort } from '../../stores/actions/index';
 import { connect } from 'react-redux';
 import {
     initTitle,
@@ -8,7 +8,7 @@ import {
     changeIndex,
     renderToFalse,
     // changeLayout
-} from "../../actions/galleryAction"
+} from "../../stores/actions/galleryAction"
 const mapStateToProps = state => {
     return {
         req_col: state.galleryStatus.request_col,//搜索关键词

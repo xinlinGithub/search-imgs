@@ -1,7 +1,7 @@
 
 import { connect } from 'react-redux';
 import Header from '../../components/Header/Header';
-import { showSideBar } from "../../actions/index";
+import { showSideBar } from "../../stores/actions/index";
 
 const mapStateToProps = (state) => {
     return {

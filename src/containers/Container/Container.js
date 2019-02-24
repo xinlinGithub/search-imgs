@@ -1,5 +1,5 @@
 import Container from "../../components/Container/Container";
-import { hiddenSideBar } from './../../actions/index';
+import { hiddenSideBar } from './../../stores/actions/index';
 import { connect } from 'react-redux';
 
 

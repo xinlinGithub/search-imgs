@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import { withRouter } from "react-router-dom";
 import "./Search.less";
 import History from "./History/History";
 // 单独把历史记录这一块拆分成一个组件 便于操作
@@ -57,21 +58,26 @@ class Search extends Component {
   }
   handleKeyDown = (e) => {
     const event = window.event || e;
-    if(event.keyCode=== 13) {
+    if(event.keyCode === 13) {
       this.handleSubmit();
     }
   }
-  setLocalStorage = () => {
-    const { storageName, history_list} = this.state;
-    localStorage.setItem(storageName, JSON.stringify(history_list))
+  getLocalStorage = () => {
+    const { storageName } = this.state;
+    let storage = localStorage.getItem(storageName) || "[]";
+    return JSON.parse(storage);
+  }
+  setLocalStorage = (storArr) => {
+    const { storageName } = this.state;
+    localStorage.setItem(storageName, JSON.stringify(storArr))
   }
   deleteOneHistory = (e, index) => {
     // 取消事件冒泡 防止触发父级
     e.stopPropagation();
-    let history_list = this.state.history_list;
-    history_list.splice(index, 1);
-    this.setState({ history_list, focus: true });
-    this.setLocalStorage();
+    var storeArr = this.state.history_list;
+    storeArr.splice(index, 1);
+    this.setState({ history_list: storeArr, focus: true });
+    this.setLocalStorage(storeArr);
   };
     //   如果点击区域不是历史记录区 就让他隐藏 否则就让他展示
   selectTarget = e => {
@@ -92,31 +98,23 @@ class Search extends Component {
   };
   // 点击搜索 提交数据
   handleSubmit = () => {
+    // 在这里面 不要设置state的值 否则页面会重新刷新 就不跳转了
     const value = this.inpCon.current.value;
-    const h_list = this.state.history_list;
-    if (value === "") {
-      return;
-    }
+    if (value === "") return;
+    let h_list = this.state.history_list;
     // 内容已经在历史中存在则直接跳转即可
-    if(h_list.includes(value)){
-      this.jumpToWaterfull(value);
-      return;
+    if(!h_list.includes(value)){
+      h_list = [value, ...h_list];
+      this.setLocalStorage(h_list);
     }
-    // 使用异步 当更改完state后再 存储到本地
-    new Promise((resolve,reject) => {
-      this.setState({
-        history_list: [value, ...h_list]
-      });
-      resolve(value);
-    }).then((value) => {
-      // 因为下一步要用到state值 所以必须等他更改完才能用
-      this.setLocalStorage();
-      this.jumpToWaterfull(value);
-    })
+    this.jumpToWaterfull(value);
   };
   // 点击搜索后跳转页面
   jumpToWaterfull = (value) => {
     this.props.history.push({pathname: "/searchkey", search: value, state: {req_col:value, req_title: value}});
+    this.setState({
+      history_list: this.getLocalStorage()
+    });
   }  
   upToInput = item => {
     this.inpCon.current.value = item;

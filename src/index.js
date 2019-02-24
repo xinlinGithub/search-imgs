@@ -5,6 +5,9 @@ import Routes from "./routes/Route";
 import store from "./stores/index";
 import "./index.css";
 
+// 每次重新加载后原来布局的图片不变 只更新加载后的图片 原因是：因为你拿到的新数据包含旧数据
+// 渲染时他会和你以前的数据进行比对 如果以前的数据没有改变 他就不会移除虚拟dom之渲染你拿到的新数据
+// 这也是虚拟dom的优点不会全部重新渲染；
 render(
   <Provider store={store}>
     <Routes />
